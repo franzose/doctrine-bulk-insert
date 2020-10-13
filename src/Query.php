@@ -6,7 +6,7 @@ namespace Franzose\DoctrineBulkInsert;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Schema\Identifier;
 
-final class Query
+class Query
 {
     private $connection;
 
