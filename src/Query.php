@@ -23,6 +23,10 @@ class Query
 
         $sql = sql($this->connection->getDatabasePlatform(), new Identifier($table), $dataset);
 
+        if (method_exists($this->connection, 'executeStatement')) {
+            return $this->connection->executeStatement($sql, parameters($dataset), types($types, count($dataset)));
+        }
+
         return $this->connection->executeUpdate($sql, parameters($dataset), types($types, count($dataset)));
     }
 
