@@ -21,7 +21,11 @@ final class QueryTest extends TestCase
             ->once()
             ->andReturn(new PostgreSqlPlatform());
 
-        $connection->shouldReceive('executeUpdate')
+        $mockedMethod = method_exists(Connection::class, 'executeStatement')
+            ? 'executeStatement'
+            : 'executeUpdate';
+
+        $connection->shouldReceive($mockedMethod)
             ->once()
             ->with('INSERT INTO foo (foo, bar) VALUES (?, ?), (?, ?);', [111, 222, 333, 444], [])
             ->andReturn(2);

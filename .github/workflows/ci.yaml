@@ -14,21 +14,6 @@ jobs:
       -
         name: 'Install Dependencies'
         uses: php-actions/composer@v6
-      - name: 'Unit Tests (PHP 7.2)'
-        uses: php-actions/phpunit@v3
-        with:
-          version: '8.1'
-          php_version: '7.2'
-      - name: 'Unit Tests (PHP 7.3)'
-        uses: php-actions/phpunit@v3
-        with:
-          php_version: '7.3'
-      - name: 'Unit Tests (PHP 7.4)'
-        uses: php-actions/phpunit@v3
-        with:
-          php_version: '7.4'
-      - name: 'Unit Tests (PHP 8.0)'
-        uses: php-actions/phpunit@v3
         with:
           php_version: '8.0'
       - name: 'Unit Tests (PHP 8.1)'

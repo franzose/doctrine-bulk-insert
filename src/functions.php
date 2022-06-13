@@ -33,9 +33,9 @@ function extract_columns(array $dataset): array
 
 function quote_columns(AbstractPlatform $platform, array $columns): array
 {
-    return array_map(static function (string $column) use ($platform): string {
-        return (new Identifier($column))->getQuotedName($platform);
-    }, $columns);
+    $mapper = static fn (string $column) => (new Identifier($column))->getQuotedName($platform);
+
+    return array_map($mapper, $columns);
 }
 
 function stringify_columns(array $columns): string
@@ -54,9 +54,9 @@ function generate_placeholders(int $columnsLength, int $datasetLength): string
 
 function parameters(array $dataset): array
 {
-    return array_reduce($dataset, static function (array $flattenedValues, array $dataset): array {
-        return array_merge($flattenedValues, array_values($dataset));
-    }, []);
+    $reducer = static fn (array $flattenedValues, array $dataset) => array_merge($flattenedValues, array_values($dataset));
+
+    return array_reduce($dataset, $reducer, []);
 }
 
 function types(array $types, int $datasetLength): array

@@ -32,8 +32,6 @@ class Query
 
     public function transactional(string $table, array $dataset, array $types = []): int
     {
-        return $this->connection->transactional(function () use ($table, $dataset, $types): int {
-            return $this->execute($table, $dataset, $types);
-        });
+        return $this->connection->transactional(fn () => $this->execute($table, $dataset, $types));
     }
 }
