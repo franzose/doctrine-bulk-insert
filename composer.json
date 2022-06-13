@@ -4,8 +4,8 @@
     "description": "Bulk insert functionality for the Doctrine/DBAL",
     "license": "MIT",
     "require": {
-        "php": "^7.2",
-        "doctrine/dbal": "^2.5"
+        "php": ">=7.2",
+        "doctrine/dbal": "^2.5|^3.3"
     },
     "require-dev": {
         "mockery/mockery": "^1.2",
