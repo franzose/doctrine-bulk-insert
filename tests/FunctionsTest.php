@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Franzose\DoctrineBulkInsert\Tests;
 
-use Doctrine\DBAL\Platforms\PostgreSqlPlatform;
+use Doctrine\DBAL\Platforms\PostgreSQLPlatform;
 use Doctrine\DBAL\Schema\Identifier;
 use function Franzose\DoctrineBulkInsert\extract_columns;
 use function Franzose\DoctrineBulkInsert\parameters;
@@ -71,7 +71,7 @@ final class FunctionsTest extends TestCase
 
     public function testSql(): void
     {
-        $sql = sql(new PostgreSqlPlatform(), new Identifier('foo'), static::DATASET);
+        $sql = sql(new PostgreSQLPlatform(), new Identifier('foo'), static::DATASET);
         $expected = 'INSERT INTO foo (foo, bar, qux) VALUES (?, ?, ?), (?, ?, ?);';
 
         static::assertEquals($expected, $sql);

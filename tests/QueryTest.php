@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Franzose\DoctrineBulkInsert\Tests;
 
 use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\Platforms\PostgreSqlPlatform;
+use Doctrine\DBAL\Platforms\PostgreSQLPlatform;
 use Franzose\DoctrineBulkInsert\Query;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
@@ -19,7 +19,7 @@ final class QueryTest extends TestCase
         $connection = Mockery::mock(Connection::class);
         $connection->shouldReceive('getDatabasePlatform')
             ->once()
-            ->andReturn(new PostgreSqlPlatform());
+            ->andReturn(new PostgreSQLPlatform());
 
         $mockedMethod = method_exists(Connection::class, 'executeStatement')
             ? 'executeStatement'
