@@ -14,6 +14,8 @@ jobs:
       -
         name: 'Install Dependencies'
         uses: php-actions/composer@v6
+      - name: 'Unit Tests (PHP 8.0)'
+        uses: php-actions/phpunit@v3
         with:
           php_version: '8.0'
       - name: 'Unit Tests (PHP 8.1)'
