@@ -13,7 +13,7 @@ use Franzose\DoctrineBulkInsert\Query;
 $connection = new Connection(...);
 
 // Execute query and get affected rows back
-$rows = (new Query($connection))->execute('foo', [
+$rows = (new Query($connection))->execute('FooTable', [
     ['foo' => 111, 'bar' => 222],
     ['foo' => 333, 'bar' => 444],
 ]);
