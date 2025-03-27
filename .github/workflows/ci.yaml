@@ -7,18 +7,19 @@ on:
 jobs:
   unit-tests:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ["8.0", "8.1", "8.2", "8.3"]
     steps:
       -
         name: 'Checkout The Code'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       -
         name: 'Install Dependencies'
         uses: php-actions/composer@v6
-      - name: 'Unit Tests (PHP 8.0)'
-        uses: php-actions/phpunit@v3
         with:
-          php_version: '8.0'
-      - name: 'Unit Tests (PHP 8.1)'
-        uses: php-actions/phpunit@v3
+          php_version: "${{ matrix.php }}"
+      - name: 'Unit Tests'
+        uses: php-actions/phpunit@v4
         with:
-          php_version: '8.1'
+          php_version: "${{ matrix.php }}"
