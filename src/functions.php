@@ -10,9 +10,15 @@ function sql(AbstractPlatform $platform, Identifier $table, array $dataset): str
 {
     $columns = quote_columns($platform, extract_columns($dataset));
 
+    if (method_exists($table, 'getObjectName')) {
+        $tableName = $table->getObjectName()->toSQL($platform);
+    } else {
+        $tableName = $table->getQuotedName($platform);
+    }
+
     $sql = sprintf(
         'INSERT INTO %s %s VALUES %s;',
-        $table->getQuotedName($platform),
+        $tableName,
         stringify_columns($columns),
         generate_placeholders(count($columns), count($dataset))
     );
